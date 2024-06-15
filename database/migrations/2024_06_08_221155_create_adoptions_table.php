@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('userId');
             $table->bigInteger('petId');
+            $table->string('status');
             $table->timestamps();
         });
     }

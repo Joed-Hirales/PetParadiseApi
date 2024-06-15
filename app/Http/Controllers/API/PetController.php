@@ -11,7 +11,12 @@ class PetController extends Controller
 {
     //
     public function index() {
-        $pets = Pet::with(['report'])->get();
+        $pets = Pet::whereDoesntHave('adoptions')
+                    ->orWhereHas('adoptions', function ($query) {
+                        $query->where('status', 'rejected');
+                    })
+                    ->with('report') // Eager load the 'report' relationship if needed
+                    ->get();
 
         if($pets->isEmpty()) {
             return response()->json(["error" => "There is not pets"], 422);

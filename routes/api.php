@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('adoption/{id}', [AdoptionController::class,'show']);
     Route::post('/adoption', [AdoptionController::class,'store']);
     Route::patch('/adoption/{id}', [AdoptionController::class,'update']);
+    Route::post('adoption/management/{id}', [AdoptionController::class,'acceptAdoption']);
 
     Route::fallback(function () {
         return response()->json(['error' => 'Unauthenticated', 401]);

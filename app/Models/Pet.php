@@ -22,4 +22,7 @@ class Pet extends Model
     public function report() {
         return $this->hasMany(Report::class, "petId");
     }
+    public function adoptions() {
+        return $this->hasMany(Adoption::class, "petId");
+    }
 }

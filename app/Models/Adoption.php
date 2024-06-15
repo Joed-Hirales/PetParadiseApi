@@ -11,7 +11,8 @@ class Adoption extends Model
 
     protected $fillable = [
         "userId",
-        "petId"
+        "petId",
+        "status"
     ];
 
     protected $hidden = [
